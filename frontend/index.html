@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Restaurant Management System</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">🍽️ Restaurant Manager</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link active">Dashboard</a></li>
+        <li><a href="menu.html" class="nav-link">Menu</a></li>
+        <li><a href="orders.html" class="nav-link">Orders</a></li>
+        <li><a href="reservations.html" class="nav-link">Reservations</a></li>
+        <li><a href="tables.html" class="nav-link">Tables</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="page-header">
+      <h1 class="page-title">Dashboard</h1>
+      <p class="page-subtitle">Overview of your restaurant operations</p>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="stats-grid" id="statsContainer">
+      <div class="stat-card">
+        <div class="stat-icon">📋</div>
+        <div class="stat-value" id="totalOrders">0</div>
+        <div class="stat-label">Total Orders</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⏳</div>
+        <div class="stat-value" id="pendingOrders">0</div>
+        <div class="stat-label">Pending Orders</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💰</div>
+        <div class="stat-value" id="totalRevenue">$0</div>
+        <div class="stat-label">Total Revenue</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📅</div>
+        <div class="stat-value" id="totalReservations">0</div>
+        <div class="stat-label">Reservations</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">✅</div>
+        <div class="stat-value" id="availableTables">0</div>
+        <div class="stat-label">Available Tables</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🍽️</div>
+        <div class="stat-value" id="menuItems">0</div>
+        <div class="stat-label">Menu Items</div>
+      </div>
+    </div>
+
+    <!-- Recent Orders and Tables -->
+    <div class="grid-2">
+      <!-- Recent Orders -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Recent Orders</h2>
+          <a href="orders.html" class="btn btn-sm btn-primary">View All</a>
+        </div>
+        <div id="recentOrdersContainer">
+          <div class="loading-container">
+            <div class="loading"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table Status -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Table Status</h2>
+          <a href="tables.html" class="btn btn-sm btn-primary">View All</a>
+        </div>
+        <div id="tableStatusContainer">
+          <div class="loading-container">
+            <div class="loading"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="card" style="margin-top: 2rem;">
+      <div class="card-header">
+        <h2 class="card-title">Quick Actions</h2>
+      </div>
+      <div class="grid-4">
+        <a href="menu.html" class="btn btn-primary" style="text-align: center;">Manage Menu</a>
+        <a href="orders.html" class="btn btn-success" style="text-align: center;">New Order</a>
+        <a href="reservations.html" class="btn btn-warning" style="text-align: center;">New Reservation</a>
+        <a href="tables.html" class="btn btn-secondary" style="text-align: center;">Manage Tables</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

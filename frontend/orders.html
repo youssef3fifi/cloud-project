@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders - Restaurant Management System</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">🍽️ Restaurant Manager</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Dashboard</a></li>
+        <li><a href="menu.html" class="nav-link">Menu</a></li>
+        <li><a href="orders.html" class="nav-link active">Orders</a></li>
+        <li><a href="reservations.html" class="nav-link">Reservations</a></li>
+        <li><a href="tables.html" class="nav-link">Tables</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="page-header">
+      <h1 class="page-title">Order Management</h1>
+      <p class="page-subtitle">Track and manage restaurant orders</p>
+    </div>
+
+    <!-- Actions Bar -->
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div class="filters">
+          <button class="filter-btn active" onclick="filterByStatus('all')">All Orders</button>
+          <button class="filter-btn" onclick="filterByStatus('pending')">Pending</button>
+          <button class="filter-btn" onclick="filterByStatus('preparing')">Preparing</button>
+          <button class="filter-btn" onclick="filterByStatus('completed')">Completed</button>
+        </div>
+        <button class="btn btn-primary" onclick="openNewOrderModal()">+ New Order</button>
+      </div>
+    </div>
+
+    <!-- Orders Container -->
+    <div id="ordersContainer" style="margin-top: 2rem;">
+      <div class="loading-container">
+        <div class="loading"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- New Order Modal -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content" style="max-width: 800px;">
+      <div class="modal-header">
+        <h2 class="modal-title">New Order</h2>
+        <button class="modal-close" onclick="closeOrderModal()">&times;</button>
+      </div>
+      <form id="orderForm" onsubmit="handleOrderSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="tableNumber">Table Number *</label>
+          <input type="number" id="tableNumber" class="form-input" min="1" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Order Items</label>
+          <div id="orderItemsContainer" style="margin-bottom: 1rem;">
+            <!-- Order items will be added here -->
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="addOrderItem()">+ Add Item</button>
+        </div>
+
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: bold; padding: 1rem; background: var(--light-bg); border-radius: 4px;">
+            <span>Total:</span>
+            <span id="orderTotal">$0.00</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeOrderModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submitOrderBtn">Create Order</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/orders.js"></script>
+</body>
+</html>
