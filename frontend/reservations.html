@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservations - Restaurant Management System</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">🍽️ Restaurant Manager</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Dashboard</a></li>
+        <li><a href="menu.html" class="nav-link">Menu</a></li>
+        <li><a href="orders.html" class="nav-link">Orders</a></li>
+        <li><a href="reservations.html" class="nav-link active">Reservations</a></li>
+        <li><a href="tables.html" class="nav-link">Tables</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="page-header">
+      <h1 class="page-title">Reservations</h1>
+      <p class="page-subtitle">Manage table reservations</p>
+    </div>
+
+    <!-- Actions Bar -->
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <label style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-weight: 500;">Filter by Date:</span>
+            <input type="date" id="dateFilter" class="form-input" style="width: auto;" onchange="filterByDate(this.value)">
+          </label>
+          <button class="btn btn-sm btn-secondary" onclick="clearDateFilter()">Clear</button>
+        </div>
+        <button class="btn btn-primary" onclick="openNewReservationModal()">+ New Reservation</button>
+      </div>
+    </div>
+
+    <!-- Reservations Container -->
+    <div id="reservationsContainer" style="margin-top: 2rem;">
+      <div class="loading-container">
+        <div class="loading"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- New Reservation Modal -->
+  <div id="reservationModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">New Reservation</h2>
+        <button class="modal-close" onclick="closeReservationModal()">&times;</button>
+      </div>
+      <form id="reservationForm" onsubmit="handleReservationSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="customerName">Customer Name *</label>
+          <input type="text" id="customerName" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="customerEmail">Email</label>
+          <input type="email" id="customerEmail" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="customerPhone">Phone Number *</label>
+          <input type="tel" id="customerPhone" class="form-input" required>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label" for="reservationDate">Date *</label>
+            <input type="date" id="reservationDate" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reservationTime">Time *</label>
+            <input type="time" id="reservationTime" class="form-input" required>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label" for="guestCount">Number of Guests *</label>
+            <input type="number" id="guestCount" class="form-input" min="1" max="20" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="tableNumber">Table Number (Optional)</label>
+            <input type="number" id="tableNumber" class="form-input" min="1">
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeReservationModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submitReservationBtn">Create Reservation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/reservations.js"></script>
+</body>
+</html>

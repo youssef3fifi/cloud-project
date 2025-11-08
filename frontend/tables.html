@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tables - Restaurant Management System</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">🍽️ Restaurant Manager</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Dashboard</a></li>
+        <li><a href="menu.html" class="nav-link">Menu</a></li>
+        <li><a href="orders.html" class="nav-link">Orders</a></li>
+        <li><a href="reservations.html" class="nav-link">Reservations</a></li>
+        <li><a href="tables.html" class="nav-link active">Tables</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="page-header">
+      <h1 class="page-title">Table Management</h1>
+      <p class="page-subtitle">Monitor and manage table availability</p>
+    </div>
+
+    <!-- Status Legend -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Status Legend</h2>
+      </div>
+      <div class="grid-3">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--success-color);"></div>
+          <span><strong>Available:</strong> Table is ready for customers</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--accent-color);"></div>
+          <span><strong>Occupied:</strong> Table is currently in use</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--warning-color);"></div>
+          <span><strong>Reserved:</strong> Table has an upcoming reservation</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table Statistics -->
+    <div class="stats-grid" id="tableStats">
+      <div class="stat-card">
+        <div class="stat-icon" style="color: var(--success-color);">✅</div>
+        <div class="stat-value" id="availableCount">0</div>
+        <div class="stat-label">Available</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="color: var(--accent-color);">🔴</div>
+        <div class="stat-value" id="occupiedCount">0</div>
+        <div class="stat-label">Occupied</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="color: var(--warning-color);">📅</div>
+        <div class="stat-value" id="reservedCount">0</div>
+        <div class="stat-label">Reserved</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🍽️</div>
+        <div class="stat-value" id="totalTables">0</div>
+        <div class="stat-label">Total Tables</div>
+      </div>
+    </div>
+
+    <!-- Tables Visual Layout -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Restaurant Layout</h2>
+        <div class="filters">
+          <button class="filter-btn active" onclick="filterTables('all')">All</button>
+          <button class="filter-btn" onclick="filterTables('available')">Available</button>
+          <button class="filter-btn" onclick="filterTables('occupied')">Occupied</button>
+          <button class="filter-btn" onclick="filterTables('reserved')">Reserved</button>
+        </div>
+      </div>
+      <div id="tablesContainer" class="table-visual">
+        <div class="loading-container">
+          <div class="loading"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Table Status Modal -->
+  <div id="tableModal" class="modal">
+    <div class="modal-content" style="max-width: 400px;">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTableTitle">Table #</h2>
+        <button class="modal-close" onclick="closeTableModal()">&times;</button>
+      </div>
+      <div id="tableDetails">
+        <!-- Table details will be loaded here -->
+      </div>
+      <div id="tableActions" style="margin-top: 2rem;">
+        <!-- Table actions will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/tables.js"></script>
+</body>
+</html>
